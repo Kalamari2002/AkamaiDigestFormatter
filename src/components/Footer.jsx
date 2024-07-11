@@ -1,4 +1,3 @@
-import Entry from "../classes/Entry";
 import Button from "./Button";
 
 function Footer(props) {

@@ -1,22 +1,49 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
-import Field from "./Field";
 import Entry from "../classes/Entry.js"
-import Article from "./Article";
+import ArticleSet from "./ArticleSet.jsx";
+
 function Adder() {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("0");
     const [link, setLink] = useState("");
 
     const [idx, setIdx] = useState(0);
     const [entries, setEntries] = useState([]);
+
+    const [growthEntries, setGrowthEntries] = useState([]);
+    const [authorityEntries, setAuthorityEntries] = useState([]);
+    const [brandEntries, setBrandEntries] = useState([]);
+    const [customerEntries, setCustomerEntries] = useState([]);
+    const [empowerEntries, setEmpowerEntries] = useState([]);
+
+
     
     const handleAdd = () => {
-        console.log("EntryAdded");
+        
         //var newEntry = new Entry ("","","","", idx);
         var newEntry = new Entry(title, author, category, link, idx);
-        setEntries([...entries, newEntry]);
+        const entryCat = parseInt(newEntry.getCategory());
+
+        switch(entryCat){
+            case 0:
+                setGrowthEntries([...growthEntries, newEntry])
+                break;
+            case 1:
+                setAuthorityEntries([...authorityEntries, newEntry])
+                break;
+            case 2:
+                setBrandEntries([...brandEntries, newEntry])
+                break;
+            case 3:
+                setCustomerEntries([...customerEntries, newEntry])
+                break;
+            case 4:
+                setEmpowerEntries([...empowerEntries, newEntry])
+                break;
+        }
+        //setEntries([...entries, newEntry]);
         setIdx(idx + 1);
     }
 
@@ -43,23 +70,34 @@ function Adder() {
                 <label htmlFor="author">Author</label>
                 <input onChange={changeAuthor} value={author} type="text" id="author" className="bg-red-50 border border-red-500"/>
 
-
-                <label htmlFor="category">Category</label>
-                <input onChange={changeCategory} value={category} type="text" id="category" className="bg-red-50 border border-red-500"/>
-
                 <label htmlFor="link">Link</label>
                 <input onChange={changeLink} value={link} type="text" id="link" className="bg-red-50 border border-red-500"/>
+
+                <label htmlFor="category">Category</label>
+                <select onChange={changeCategory} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value={0}>-</option>
+                    <option value={0}>Drive Growth</option>
+                    <option value={1}>Build Visibility & Authority</option>
+                    <option value={2}>Build Our Brand</option>
+                    <option value={3}>Evolve Our Customer Experience</option>
+                    <option value={4}>Work with Purpose and Empower our People</option>
+                </select>
+
 
                 </div>
 
                 <Button name="Add" func={handleAdd} key="Add"/>
             </li>
             <>
-            <h1>List</h1>
                 <ul className="list-none">
-                    {entries.map((entry) => (
-                        <Article title={entry.getTitle()} author={entry.getAuthor()} link={entry.getLink()} key={entry.getIdx()}/>
-                    ))}
+
+                    <ul className="bold text-[16px]">
+                        <ArticleSet title="MCG: Drive Growth" entries={growthEntries}/>
+                        <ArticleSet title="MCG: Build Visibility & Authority" entries={authorityEntries}/>
+                        <ArticleSet title="MCG: Build Our Brand" entries={brandEntries}/>
+                        <ArticleSet title="MCG: Evolve Our Customer Experience" entries={customerEntries}/>
+                        <ArticleSet title="MCG: Work with Purpose and Empower our People" entries={empowerEntries}/>
+                    </ul>
                 </ul>
             </>
         </div>
