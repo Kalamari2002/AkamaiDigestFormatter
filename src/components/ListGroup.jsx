@@ -3,8 +3,10 @@ import Adder from "./Adder.jsx";
 function ListGroup() {
     return (
         <>
-            <h1 className="font-comic font-bold text-[32px] pb-6">giga digest formatter 4000</h1>
-            <Adder />
+            <h1 className="flex justify-center items-center font-comic font-bold text-[32px] text-vapor-pink pb-6">giga digest formatter 4000</h1>
+            <div className="flex justify-center items-center">
+                <Adder />
+            </div>
         </>
     )
    /* 

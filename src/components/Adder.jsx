@@ -60,18 +60,18 @@ function Adder() {
         setLink(event.target.value);
     }
     return (
-        <div className="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <li className="w-64 text-red-600 flex flex-col">
+        <div className="h-screen py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+            <li className="w-64 text-vapor-pink flex flex-col">
                 <div className="grid grid-cols-2 gap-2 grid grid-rows-4 gap-2">
                 
                 <label htmlFor="title" className="font-comic font-bold text-[24px]">Title</label>
-                <input onChange={changeTitle} value={title} type="text" id="title" className="bg-red-50 border border-red-500"/>
+                <input onChange={changeTitle} value={title} type="text" id="title" className="bg-red-50 border border-vapor-pink"/>
                 
                 <label htmlFor="author" className="font-comic font-bold text-[24px]">Author</label>
-                <input onChange={changeAuthor} value={author} type="text" id="author" className="bg-red-50 border border-red-500"/>
+                <input onChange={changeAuthor} value={author} type="text" id="author" className="bg-red-50 border border-vapor-pink"/>
 
                 <label htmlFor="link" className="font-comic font-bold text-[24px]">Link</label>
-                <input onChange={changeLink} value={link} type="text" id="link" className="bg-red-50 border border-red-500"/>
+                <input onChange={changeLink} value={link} type="text" id="link" className="bg-red-50 border border-vapor-pink"/>
 
                 <label htmlFor="category" className="font-comic font-bold text-[24px]">Category</label>
                 <select onChange={changeCategory} id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
